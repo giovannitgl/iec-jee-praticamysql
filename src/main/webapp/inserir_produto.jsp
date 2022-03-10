@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Inserir Categoria</title>
+<title>Inserir Produto</title>
 	<style>
 		.form {
 			display: flex;
@@ -24,7 +24,7 @@
 </head>
 <body>
     <center>
-		<h1>Inserir Categoria</h1>
+		<h1>Inserir Produto</h1>
 		<form action="inserir-produto" method="POST">
 			<div class="form">
 				<div class="input-entry">
