@@ -8,9 +8,9 @@
 </head>
 <body>
 	<center>
-		<h1>Categorias de Despesas</h1>
+		<h1>Categorias de Produtos</h1>
         <h2>
-        	<a href="inserir.jsp">Inserir Nova Categoria</a>
+        	<a href="inserir_categoria.jsp">Inserir Nova Categoria</a>
         	&nbsp;&nbsp;&nbsp;       	        	
         </h2>
 	</center>
@@ -26,16 +26,17 @@
                 <tr>
                     <td><c:out value="${categoria.codigo}" /></td>
                     <td><c:out value="${categoria.nome}" /></td>                   
-                    
+
                     <td>
-                    	<a href="edit?id=<c:out value='${categoria.codigo}' />">Alterar</a>
+                    	<a href="edit-categoria?id=<c:out value='${categoria.codigo}' />">Alterar</a>
                     		&nbsp;&nbsp;&nbsp;&nbsp;
-                    	<a href="delete?id=<c:out value='${categoria.codigo}' />">Deletar</a>                    	
+                    	<a href="delete-categoria?id=<c:out value='${categoria.codigo}' />">Deletar</a>
                     </td>
                 </tr>
             </c:forEach>
         </table>
-    </div>	
+        <a href="index.html"> Voltar </a>
+    </div>
 </body>
 
 </html>

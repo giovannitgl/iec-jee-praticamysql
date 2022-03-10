@@ -10,17 +10,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import business.CategoriaService;
+import dao.CategoriaDAO;
 
-@WebServlet(urlPatterns = "/delete")
+@WebServlet(urlPatterns = "/delete-categoria")
 public class DeletarCategoria extends HttpServlet {
 	@EJB
-    private CategoriaService service;
+    private CategoriaDAO dao = new CategoriaDAO();
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
 			Integer codigo = Integer.parseInt(request.getParameter("id"));
-            service.deletar(codigo);
-            response.sendRedirect(request.getContextPath() + "/index.jsp");			
+            dao.deletar(codigo);
+            response.sendRedirect(request.getContextPath() + "/index.html");
 		} catch (Exception ex) {
 			throw new ServletException(ex);
 		}

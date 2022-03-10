@@ -10,18 +10,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import business.CategoriaService;
+import dao.CategoriaDAO;
 import model.Categoria;
 
 
 /**
  * Servlet implementation class InserirCategoria
  */
-@WebServlet("/inserir")
+@WebServlet("/inserir-categoria")
 public class InserirCategoria extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	@EJB
-	private CategoriaService service;
+	private CategoriaDAO dao = new CategoriaDAO();
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			  throws ServletException, IOException {
 		
@@ -31,16 +32,16 @@ public class InserirCategoria extends HttpServlet {
 		categoria.setNome(nome);		
 		
 		try {
-			service.inserir(categoria);
+			dao.inserir(categoria);
 	
-			response.sendRedirect(request.getContextPath() + "/index.jsp");
+			response.sendRedirect(request.getContextPath() + "/index.html");
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			PrintWriter out = response.getWriter();
 			out.print("<html>");
 			out.print("<h2> Nao foi possivel inserir a categoria!</h2>");
 			out.print("<br");
-			out.print("<a href = 'index.jsp'> Voltar </a>");
+			out.print("<a href='index.html'> Voltar </a>");
 			out.print("</html>");
 		}			
 	}

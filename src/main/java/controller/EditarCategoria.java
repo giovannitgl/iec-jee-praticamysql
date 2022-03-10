@@ -12,27 +12,28 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import business.CategoriaService;
+import dao.CategoriaDAO;
 import model.Categoria;
 
-@WebServlet(urlPatterns = "/edit")
+@WebServlet(urlPatterns = "/edit-categoria")
 public class EditarCategoria extends HttpServlet {
     @EJB
-    private CategoriaService service;
+    private CategoriaDAO dao = new CategoriaDAO();
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
 			Integer codigo = Integer.parseInt(request.getParameter("id"));
-            Categoria categoria = service.porCodigo(codigo);
+            Categoria categoria = dao.porCodigo(codigo);
             if(categoria == null) {
                 PrintWriter out = response.getWriter();
                 out.print("<html>");
                 out.print("<h2> Nao foi possivel localizar a categoria de codigo " + codigo + "</h2>");
                 out.print("<br");
-                out.print("<a href = 'index.jsp'> Voltar </a>");
+                out.print("<a href = 'index.html'> Voltar </a>");
                 out.print("</html>");
             }else {
                 request.setAttribute("categoria", categoria);
-                RequestDispatcher dispatcher = request.getRequestDispatcher("editar.jsp");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("editar_categoria.jsp");
                 dispatcher.forward(request, response);
             }
 		} catch (Exception ex) {
@@ -47,8 +48,8 @@ public class EditarCategoria extends HttpServlet {
             Categoria categoria = new Categoria();
             categoria.setCodigo(codigo);
             categoria.setNome(nome);
-            service.editar(categoria);
-            response.sendRedirect(request.getContextPath() + "/index.jsp");
+            dao.editar(categoria);
+            response.sendRedirect(request.getContextPath() + "/index.html");
         } catch (Exception ex) {
             throw new ServletException(ex);
         }

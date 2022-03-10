@@ -13,7 +13,7 @@
 			Nome: <input type="text" name="nome" id="nome" value="${categoria.nome}">
 			<input type="submit" value="Editar">
 		</form>
-		<a href="index.jsp"> Voltar </a>
+		<a href="index.html"> Voltar </a>
 	</center>
 </body>
 </html>
