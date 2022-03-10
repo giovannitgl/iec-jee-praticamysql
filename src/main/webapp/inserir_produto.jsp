@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Inserir Categoria</title>
+<title>Inserir Produto</title>
 	<style>
 		.form {
 			display: flex;
